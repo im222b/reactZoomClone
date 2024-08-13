@@ -10,15 +10,15 @@ html(lang="en")
             h1 NOOM
     main
         div#welcome
-            form
+            form#nick-name
+                input(placeholder="아이디을 정하세요",required, type="text")
+                button  저장
+            form#room-name
                 input(placeholder="방 이름을 정하세요",required, type="text")
                 button  입장
         div#room
             h3
             ul
-            form#name
-                input(placeholder="아이디를 입력하세요",requtid, type="text")
-                button 저장
             form#msg
                 input(placeholder="메시지를 입력하세요",requtid, type="text")
                 button 보내기
