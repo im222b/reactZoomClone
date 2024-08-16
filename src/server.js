@@ -16,9 +16,25 @@ app.get("/*", (req, res) => res.redirect("/"));
 const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
+function publicRooms() {
+    const {
+        socket: {
+            adapter: {sids, rooms},
+        },
+    } = wsServer;
+    const publicRooms = [];
+    rooms.forEach((_,key) => {
+        if(sids.get(key)===undefined){
+            publicRooms.push(key);
+        }
+    });
+    return publicRooms;
+}
+
 wsServer.on("connection", (socket) => {
     socket["nickname"] = "Anon";
     socket.onAny((event) => {
+        console.log(wsServer.sockets.adapter);
         console.log(`Socket Event: ${event}`);
     });
     socket.on("enter_room", (roomName, done) => {
