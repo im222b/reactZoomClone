@@ -9,20 +9,11 @@ html(lang="en")
     header
             h1 NOOM
     main
-        div#welcome
-            form#nick-name
-                input(placeholder="아이디을 정하세요",required, type="text")
-                button  저장
-            form#room-name
-                input(placeholder="방 이름을 정하세요",required, type="text")
-                button  입장
-            h4 방 정보:
-            ul
-        div#room
-            h3
-            ul
-            form#msg
-                input(placeholder="메시지를 입력하세요",requtid, type="text")
-                button 보내기
+        div#mySteam
+            video#myface(autoplay,playsinline, width="400", height="400")
+            button#mute 마이크 꺼짐
+            button#camera 카메라 꺼짐
+            select#cameras
+
     script(src="/socket.io/socket.io.js")
     script(src="/public/js/app.js")
