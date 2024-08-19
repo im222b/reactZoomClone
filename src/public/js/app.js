@@ -53,12 +53,29 @@ function addMessage(message) {
 nameForm.addEventListener("submit", handleNicknameSubmit);
 roomForm.addEventListener("submit", handleRoomSubmit);
 
-socket.on("welcome", (user) => {
+socket.on("welcome", (user, newCount) => {
+    const h3 = room.querySelector("h3");
+    h3.innerText = `Room ${roomName} (${newCount})`;
     addMessage(`${user} 이(가) 방에 들어왔습니다😎`);
 });
 
-socket.on("bye", (left) => {
+socket.on("bye", (left, newCount) => {
+    const h3 = room.querySelector("h3");
+    h3.innerText = `Room ${roomName} (${newCount})`;
     addMessage(`${left} 이(가) 방을 떠났습니다😞`);
 });
 
 socket.on("new_message", addMessage);
+
+socket.on("room_change", (room) => {
+    const roomList = welcome.querySelector("ul");
+    roomList.innerHTML = "";
+    if (room.length === 0) {
+        return;
+    }
+    room.forEach(room => {
+        const li = document.createElement("li");
+        li.innerText = room;
+        roomList.append(li);
+    });
+});
