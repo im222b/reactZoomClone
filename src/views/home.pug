@@ -9,11 +9,16 @@ html(lang="en")
     header
             h1 NOOM
     main
-        div#mySteam
-            video#myface(autoplay,playsinline, width="400", height="400")
-            button#mute 마이크 꺼짐
-            button#camera 카메라 꺼짐
-            select#cameras
+        div#welcome
+            form
+                input(placeholeder="방 이름을 입력하세요", required, type="text")
+                button 들어가기
+        div#call
+            div#mySteam
+                video#myface(autoplay,playsinline, width="400", height="400")
+                button#mute 마이크 꺼짐
+                button#camera 카메라 꺼짐
+                select#cameras
 
     script(src="/socket.io/socket.io.js")
     script(src="/public/js/app.js")
