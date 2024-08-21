@@ -1,4 +1,5 @@
-//npm run dev
+//npm run dev  --서버 스타또
+//npx localtunnel --port 3000   -- 공유 서버 스타또
 
 import http from "http";
 import SocketIO from "socket.io";
