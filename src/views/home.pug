@@ -11,15 +11,16 @@ html(lang="en")
             h1 Noom
         main
             div#welcome
-                form
+                form(style="justify-content: center; align-items: center;")
                     input(placeholder="room name", required, type="text")
                     button Enter room
             div#call
-                div#myStream
-                    video#myFace(autoplay,playsinline, width="400", height="400")
-                    button#mute Mute
+                div#myStream(style="justify-content: center; align-items: center;")
+                    div(style="display: flex;")
+                        video#myFace(autoplay, playsinline, style="margin-right: 10px; width: 600; height: 600;")
+                        video#peerFace(autoplay, playsinline, style="width: 600; height: 600;")
+                    button#mute(style="margin-right: 10px;") Mute
                     button#camera Turn Camera Off
                     select#cameras
-                    video#peerFace(autoplay,playsinline, width="400", height="400")
         script(src="/socket.io/socket.io.js")
         script(src="/public/js/app.js")
